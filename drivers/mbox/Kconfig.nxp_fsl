@@ -1,0 +1,9 @@
+# Copyright 2022 NXP
+# SPDX-License-Identifier: Apache-2.0
+
+config MBOX_NXP_FSL_MU
+	bool "NXP Freescale Message Unit (MR) driver"
+	default y
+	depends on DT_HAS_NXP_FSL_MU_ENABLED
+	help
+	  Driver for NXP Freescale Message Unit.

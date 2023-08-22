@@ -1,0 +1,29 @@
+description: |
+  NXP Freescale Message Unit as Zephyr MBOX
+
+compatible: "nxp,fsl-mu"
+
+include: [base.yaml, mailbox-controller.yaml]
+
+properties:
+  interrupts:
+    required: true
+
+  rx-channels:
+    type: int
+    enum: [1, 2]
+    description: |
+      Number of receive channels enabled on this instance.
+      Setting this value to N, will enable channels 0 to N-1, consecutively.
+      It should be set by the receiver core coupled with this MRU instance.
+
+      For example, if receiver A wants to Rx on channels 0 and 1, then A must
+      set rx-channels of mruA as follows:
+
+        mruA {
+          rx-channels = <2>;
+          status = "okay";
+        };
+
+mbox-cells:
+  - channel
